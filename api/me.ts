@@ -1,5 +1,7 @@
 export const config = { runtime: 'edge' }
 
+declare const process: { env: Record<string, string | undefined> }
+
 async function verifyToken(token: string, secret: string): Promise<string | null> {
   try {
     const dotIndex = token.lastIndexOf('.')

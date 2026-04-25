@@ -1,5 +1,7 @@
 export const config = { runtime: 'edge' }
 
+declare const process: { env: Record<string, string | undefined> }
+
 async function signToken(payload: string, secret: string): Promise<string> {
   const enc = new TextEncoder()
   const key = await crypto.subtle.importKey(
