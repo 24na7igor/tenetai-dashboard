@@ -71,7 +71,7 @@ export default function Login() {
                 autoFocus
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-                placeholder="tenet-admin"
+                placeholder="Username"
                 className="w-full bg-obsidian-950 border border-white/[0.08] rounded-xl px-4 py-2.5 text-sm text-slate-200 placeholder-slate-700 focus:outline-none focus:border-violet-500/40 transition-colors"
               />
             </div>
