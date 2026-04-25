@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom'
-import { GoogleOAuthProvider } from '@react-oauth/google'
 import { LogOut, ChevronDown, Building2, Crown, Sparkles, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
@@ -13,8 +12,6 @@ import Analytics from './pages/Analytics'
 import Login from './pages/Login'
 import AuthCallback from './pages/AuthCallback'
 import MockExecution from './pages/MockExecution'
-
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth()
@@ -233,24 +230,12 @@ function AppContent() {
 }
 
 function App() {
-  if (!GOOGLE_CLIENT_ID) {
-    return (
-      <AuthProvider>
-        <WorkspaceProvider>
-          <AppContent />
-        </WorkspaceProvider>
-      </AuthProvider>
-    )
-  }
-
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      <AuthProvider>
-        <WorkspaceProvider>
-          <AppContent />
-        </WorkspaceProvider>
-      </AuthProvider>
-    </GoogleOAuthProvider>
+    <AuthProvider>
+      <WorkspaceProvider>
+        <AppContent />
+      </WorkspaceProvider>
+    </AuthProvider>
   )
 }
 
